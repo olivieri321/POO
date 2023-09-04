@@ -7,13 +7,13 @@ public class Jugador {
     private int cantidadPalabras;
     private int puntaje;
 
-    Diccionario diccionario;
+    private Diccionario diccionario;
 
-    public Jugador(String nombre) {
+    public Jugador(String nombre, Diccionario diccionario) {
         this.nombre = nombre;
         this.cantidadPalabras = 0;
         this.puntaje = 0;
-        this.diccionario = new Diccionario(getClass().getResource("esp.txt").getPath());
+        this.diccionario = diccionario;
         this.palabras = new Palabra[200];
     }
 
@@ -21,20 +21,11 @@ public class Jugador {
         Palabra palabra = new Palabra(valor);
         if (this.diccionario.contienePalabra(palabra.getPalabra())) {
             this.palabras[this.cantidadPalabras] = palabra;
-            this.puntaje += obtenerPuntajeUltimaPalabra();
+            this.puntaje += palabra.getPuntaje();
             this.cantidadPalabras++;
         }
     }
 
-    private int obtenerPuntajeUltimaPalabra(){
-        if (this.cantidadPalabras > 0) {
-            if (this.diccionario.contienePalabra(this.palabras[this.cantidadPalabras - 1].getPalabra())){
-                System.out.println("paso");
-                return this.palabras[this.cantidadPalabras - 1].getPuntaje();
-            }
-        }
-        return 0;
-    }
 
     public int getPuntaje() {
         return puntaje;

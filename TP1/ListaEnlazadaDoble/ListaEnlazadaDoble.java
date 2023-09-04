@@ -51,7 +51,7 @@ public class ListaEnlazadaDoble{
                 if (siguiente != null) {
                     siguiente.setAnterior(anterior);
                 } else {
-                    fin = anterior; // Actualiza 'fin' si se está eliminando el último nodo.
+                    fin = anterior;
                 }
                 cantidad--;
                 return;

@@ -1,3 +1,4 @@
+import JuegoPalabras.Diccionario;
 import ListaEnlazada.ListaEnlazada;
 import ListaEnlazadaDoble.ListaEnlazadaDoble;
 import PilaEnlazada.PilaEnlazada;
@@ -224,15 +225,19 @@ public class Main {
     public static void pruebaJuegoDePalabras(){
         System.out.println("---------------------------------------");
         System.out.println("Prueba de Juego de Palabras");
-        Jugador jugador1 = new Jugador("Alberto");
-        Jugador jugador2 = new Jugador("Juan");
-        jugador1.agregarPalabra("talentoso");
-        jugador2.agregarPalabra("a");
+        Diccionario diccionario = new Diccionario(3);
+        diccionario.cargarPalabra("hola");
+        diccionario.cargarPalabra("melon");
+        diccionario.cargarPalabra("zapatilla");
+        Jugador jugador1 = new Jugador("Alberto", diccionario);
+        Jugador jugador2 = new Jugador("Juan", diccionario);
+        jugador1.agregarPalabra("zapatilla");
+        jugador2.agregarPalabra("hola");
         if (jugador1.getPuntaje()>jugador2.getPuntaje()){
             System.out.println(jugador1.getNombre() + " es el ganador");
         }
         else if (jugador1.getPuntaje()==jugador2.getPuntaje()) {
-            System.out.println("Empate");
+            System.out.println("Empate puntaje J1 = "+jugador1.getPuntaje()+" J2 = "+jugador2.getPuntaje());
         }
         else{
             System.out.println(jugador2.getNombre() + " es el ganador");

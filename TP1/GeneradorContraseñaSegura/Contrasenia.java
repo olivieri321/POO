@@ -1,8 +1,8 @@
 package GeneradorContraseñaSegura;
 import java.util.Random;
 public class Contrasenia {
-    String contenido;
-    int longitud;
+    private String contenido;
+    private int longitud;
 
     public Contrasenia(int longitud) {
         this.contenido = "";

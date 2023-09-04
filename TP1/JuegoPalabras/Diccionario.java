@@ -8,34 +8,19 @@ public class Diccionario {
     private String[] palabrasValidas;
     private int cantidad;
 
-    public Diccionario(String archivoPalabras) {
+    public Diccionario(int cantidadPalabras) {
         this.cantidad = 0;
-        cargarPalabras(archivoPalabras);
+        this.palabrasValidas = new String[cantidadPalabras];
     }
 
-    private void cargarPalabras(String archivoPalabras) {
-        try (BufferedReader buffer = new BufferedReader(new FileReader(archivoPalabras))) {
-            int contador = 0;
-            String linea;
-            while ((linea = buffer.readLine()) != null) {
-                contador++;
-            }
+    public void cargarPalabra(String palabra) {
+        this.palabrasValidas[cantidad]=palabra;
+        cantidad ++;
+    }
 
-            palabrasValidas = new String[contador];
-            cantidad = contador;
-
-            buffer.close(); // Cierra el BufferedReader actual
-
-            BufferedReader buffer2 = new BufferedReader(new FileReader(archivoPalabras)); // Vuelve a abrir el archivo
-            contador = 0;
-            while ((linea = buffer2.readLine()) != null) {
-                palabrasValidas[contador] = linea;
-                contador++;
-            }
-
-        } catch (IOException error) {
-            error.printStackTrace();
-        }
+    public void eliminarPalabra() {
+        this.palabrasValidas[cantidad]=null;
+        cantidad --;
     }
 
 

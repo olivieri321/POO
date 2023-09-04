@@ -1,9 +1,9 @@
 package EcuacionSegundoGrado;
 
 public class Ecuacion {
-    double a;
-    double b;
-    double c;
+    private double a;
+    private double b;
+    private double c;
 
     public Ecuacion(double a, double b, double c) {
         this.a = a;
